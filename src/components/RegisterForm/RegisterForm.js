@@ -48,7 +48,6 @@ const RegisterForm = () => {
          <Wrapper>
             <TextField
                sx={{ m: 1, width: '100%' }}
-               id="filled-basic"
                label="Name"
                variant="filled"
                required
@@ -60,7 +59,6 @@ const RegisterForm = () => {
 
             <TextField
                sx={{ m: 1, width: '100%' }}
-               id="filled-basic"
                label="Email"
                variant="filled"
                required

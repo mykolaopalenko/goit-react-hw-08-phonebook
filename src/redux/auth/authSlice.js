@@ -13,7 +13,6 @@ const initialState = {
 const authSlice = createSlice({
    name: 'auth',
    initialState,
-
    extraReducers: builder =>
       builder
          .addCase(logOut.fulfilled, state => {
