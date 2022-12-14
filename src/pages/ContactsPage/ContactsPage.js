@@ -14,31 +14,31 @@ import { Wrapper } from './ContactsPage.styled';
 import { toast } from 'react-toastify';
 
 const ContactsPage = () => {
-  const dispatch = useDispatch();
-  const error = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
+   const dispatch = useDispatch();
+   const error = useSelector(selectError);
+   const isLoading = useSelector(selectIsLoading);
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+   useEffect(() => {
+      dispatch(fetchContacts());
+   }, [dispatch]);
 
-  error && toast.error(error);
+   error && toast.error(error);
 
-  return (
-    <>
-      <Section>
-        <Container>
-          <Wrapper>
-            <ModalEl>
-              <ContactForm />
-            </ModalEl>
-            <Filter />
-          </Wrapper>
-          <ContactList />
-        </Container>
-      </Section>
-      {isLoading && !error && <Loader />}
-    </>
-  );
+   return (
+      <>
+         <Section>
+            <Container>
+               <Wrapper>
+                  <ModalEl>
+                     <ContactForm />
+                  </ModalEl>
+                  <Filter />
+               </Wrapper>
+               <ContactList />
+            </Container>
+         </Section>
+         {isLoading && !error && <Loader />}
+      </>
+   );
 };
 export default ContactsPage;

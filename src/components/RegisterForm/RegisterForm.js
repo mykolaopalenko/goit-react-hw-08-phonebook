@@ -48,6 +48,7 @@ const RegisterForm = () => {
          <Wrapper>
             <TextField
                sx={{ m: 1, width: '100%' }}
+               id="filled-basic"
                label="Name"
                variant="filled"
                required
@@ -59,6 +60,7 @@ const RegisterForm = () => {
 
             <TextField
                sx={{ m: 1, width: '100%' }}
+               id="filled-basic"
                label="Email"
                variant="filled"
                required
@@ -67,7 +69,7 @@ const RegisterForm = () => {
                type="email"
                onChange={handleChange}
             />
-            
+
             <FormControl sx={{ m: 1, width: '100%' }} variant="filled">
                <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
                <FilledInput
@@ -81,10 +83,9 @@ const RegisterForm = () => {
                      <InputAdornment position="end">
                         <IconButton
                            aria-label="toggle password visibility"
-                     
                            onMouseDown={handleMouseDownPassword}
                            edge="end"
-                        >          
+                        >
                         </IconButton>
                      </InputAdornment>
                   }
@@ -92,7 +93,7 @@ const RegisterForm = () => {
             </FormControl>
             <Button
                type="submit"
-               variant="contained" 
+               variant="contained"
                sx={{
                   backgroundColor: '#1976d2',
                   opacity: 1,

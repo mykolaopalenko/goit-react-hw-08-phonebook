@@ -12,41 +12,41 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const AppBar = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+   const isLoggedIn = useSelector(selectIsLoggedIn);
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsMenuOpen(true);
-  };
+   const handleClick = () => {
+      setIsMenuOpen(true);
+   };
 
-  const handleClose = () => {
-    setIsMenuOpen(false);
-  };
+   const handleClose = () => {
+      setIsMenuOpen(false);
+   };
 
-  return (
-    <>
-      {isMenuOpen && <MobileMenu onClose={handleClose} />}
-      <StyledHeader>
-        <Container>
-          <StyledWrapper>
-            <Navigation />
-            {isLoggedIn ? <UserMenu /> : <AuthNav />}
-          </StyledWrapper>
+   return (
+      <>
+         {isMenuOpen && <MobileMenu onClose={handleClose} />}
+         <StyledHeader>
+            <Container>
+               <StyledWrapper>
+                  <Navigation />
+                  {isLoggedIn ? <UserMenu /> : <AuthNav />}
+               </StyledWrapper>
 
-          <MenuWrapper>
-            <IconButton
-              aria-label="menu"
-              onClick={handleClick}
-              sx={{ marginRight: '20px' }}
-            >
-              <MenuIcon sx={{ color: '#ffffff', opacity: '0.7' }} />
-            </IconButton>
-            {isLoggedIn ? <UserMenu /> : <AuthNav />}
-          </MenuWrapper>
-        </Container>
-      </StyledHeader>
-    </>
-  );
+               <MenuWrapper>
+                  <IconButton
+                     aria-label="menu"
+                     onClick={handleClick}
+                     sx={{ marginRight: '20px' }}
+                  >
+                     <MenuIcon sx={{ color: '#ffffff', opacity: '0.7' }} />
+                  </IconButton>
+                  {isLoggedIn ? <UserMenu /> : <AuthNav />}
+               </MenuWrapper>
+            </Container>
+         </StyledHeader>
+      </>
+   );
 };
 
 export default AppBar;

@@ -4,17 +4,17 @@ import Loader from '../Loader';
 import AppBar from '../AppBar';
 
 const Layout = () => {
-  return (
-    <>
-      <AppBar />
+   return (
+      <>
+         <AppBar />
 
-      <main>
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </main>
-    </>
-  );
+         <main>
+            <Suspense fallback={<Loader />}>
+               <Outlet />
+            </Suspense>
+         </main>
+      </>
+   );
 };
 
 export default Layout;

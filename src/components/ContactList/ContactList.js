@@ -5,17 +5,17 @@ import ContactListItem from 'components/ContactListItem';
 import { List, Contact } from './ContactList.styled';
 
 const ContactList = () => {
-  const visibleContacts = useSelector(selectVisibleContacts);
+   const visibleContacts = useSelector(selectVisibleContacts);
 
-  return (
-    <List>
-      {visibleContacts.map(({ id, name, number }) => (
-        <Contact key={id}>
-          <ContactListItem name={name} number={number} id={id} />
-        </Contact>
-      ))}
-    </List>
-  );
+   return (
+      <List>
+         {visibleContacts.map(({ id, name, number }) => (
+            <Contact key={id}>
+               <ContactListItem name={name} number={number} id={id} />
+            </Contact>
+         ))}
+      </List>
+   );
 };
 
 export default ContactList;
