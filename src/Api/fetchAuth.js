@@ -18,7 +18,7 @@ export async function login(credentials) {
       const response = await axios.post('/users/login', credentials);
       return response;
    } catch (error) {
-      toast.error('Invalid email or password');
+      toast.error('invalid email or password');
       return;
    }
 };
@@ -38,7 +38,7 @@ export async function currentFetch() {
       const response = await axios.get('/users/current');
       return response;
    } catch (error) {
-      toast.error('oops, something wrong');
+      toast.info('session time out');
       return;
    }
 };
