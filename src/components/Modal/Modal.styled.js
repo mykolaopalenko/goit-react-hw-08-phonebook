@@ -22,9 +22,15 @@ export const StyledBox = styled(Box)`
 
 
 export const StyledClose = styled.button`
+border-radius: 50%;
+border-color: transparent;
    cursor: pointer;
-   margin-right: 5px;
+   margin-left: 5px;
    padding: 0px;
    width: 20px;
    height: 20px;
+
+   &:hover{
+      fill: #1976d2;      
+   }
 `;
