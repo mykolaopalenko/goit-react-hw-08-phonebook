@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { signup, login, logout, currentFetch } from 'Api/fetchAuth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const token = {
@@ -12,57 +13,54 @@ const token = {
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (credentials, { rejectWithValue }) => {
+  async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signup', credentials);
+      const { data } = await signup(credentials);
       token.set(data.token);
       return data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
 
 export const logIn = createAsyncThunk(
-  'auth/login',
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post('/users/login', credentials);
-      token.set(data.token);
-      return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
-    }
-  }
-);
+   'auth/login',
+   async (credentials, thunkAPI) => {
+     try {
+       const { data } = await login(credentials);
+       token.set(data.token);
+       return data;
+     } catch (e) {
+       return thunkAPI.rejectWithValue(e.message);
+     }
+   }
+ );
 
-export const logOut = createAsyncThunk(
-  'auth/logout',
-  async (_, { rejectWithValue }) => {
-    try {
-      await axios.post('/users/logout');
-      token.unset();
-    } catch (e) {
-      return rejectWithValue(e.message);
-    }
-  }
-);
+ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+   try {
+     const { data } = await logout();
+     token.unset();
+     return data;
+   } catch (e) {
+     return thunkAPI.rejectWithValue(e.message);
+   }
+ });
 
 export const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
-  async (_, { getState, rejectWithValue }) => {
-    const state = getState();
-    const persistedToken = state.auth.token;
-
-    if (persistedToken === null) {
-      return rejectWithValue();
-    }
-    token.set(persistedToken);
-    try {
-      const { data } = await axios.get('/users/current');
-      return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
-    }
-  }
-);
+   'auth/current',
+   async (_, { getState, rejectWithValue }) => {
+     if (getState().auth.token === null) {
+       return rejectWithValue();
+     }
+ 
+     token.set(getState().auth.token);
+ 
+     try {
+       const { data } = await currentFetch();
+       return data;
+     } catch (e) {
+       return rejectWithValue(e.message);
+     }
+   }
+ );

@@ -21,7 +21,7 @@ const RegisterPage = () => {
                </Wrapper>
             </Container>
          </Section>
-         {isLoading && !error && <Loader />}
+         {isLoading  && <Loader />}
       </>
    );
 };
